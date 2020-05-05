@@ -1,9 +1,6 @@
 import Commands from './lib/commands/Commands';
 
-export const process = (input: string) => {
+export const parse = (input: string) => {
   const c = new Commands();
-  let command = c.parse(input);
-  console.log(JSON.stringify(command, null, 2));
+  return c.parse(input);
 };
-
-process('salesforce opportunity:"Something" field:"Next Steps":"Test" field:"amount":"1000"');
