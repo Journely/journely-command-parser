@@ -1,0 +1,86 @@
+{
+  "salesforce": {
+    "name": "Salesforce",
+    "alias": "sf",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/vendors/sf.png",
+    "description": "Salesforce provides customer-relationship management service and also sells a complementary suite of enterprise applications focused on customer service, marketing automation, analytics, and application development",
+    "appUrl": "",
+    "objects": {
+      "opportunity": {
+        "fields": [
+          {
+            "name": "next_steps",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "stage",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "amount",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "notes",
+            "type": "text",
+            "default": ""
+          }
+        ]
+      },
+      "contact": {
+        "fields": []
+      }
+    }
+  },
+  "zoom": {
+    "name": "Zoom",
+    "alias": "zm",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/vendors/zoom.png",
+    "description": "Zoom provides videotelephony and online chat services through a cloud-based peer-to-peer software platform and is used for teleconferencing, telecommuting, distance education, and social relations",
+    "appUrl": "",
+    "objects": {
+      "meetings": {
+        "fields": []
+      }
+    }
+  },
+  "gcal": {
+    "name": "Google Calendar",
+    "alias": "gcal",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/google-cal.png",
+    "description": "Google Cal",
+    "appUrl": "",
+    "objects": {
+      "events": {
+        "fields": []
+      }
+    }
+  },
+  "asana": {
+    "name": "Asana",
+    "alias": "gcal",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/",
+    "description": "Asana",
+    "appUrl": "",
+    "objects": {
+      "events": {
+        "fields": []
+      }
+    }
+  },
+  "linavigator": {
+    "name": "LinkedIn Navigator",
+    "alias": "gcal",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/",
+    "description": "Asana",
+    "appUrl": "",
+    "objects": {
+      "events": {
+        "fields": []
+      }
+    }
+  }
+}

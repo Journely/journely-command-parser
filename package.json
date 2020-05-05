@@ -1,0 +1,19 @@
+{
+  "name": "journely-command-parser",
+  "version": "1.0.0",
+  "description": "Journely Command Parser Library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/Journely/journely-command-parser.git",
+  "author": "Dwamian Mcleish <dmcleish@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prepublish": "tsc",
+    "start": "tsc --watch & nodemon dist/index.js"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.150",
+    "lodash": "^4.17.15"
+  }
+}
