@@ -9,11 +9,21 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "yarn run test & tsc",
     "prepublish": "tsc",
-    "start": "tsc --watch & nodemon dist/index.js"
+    "start": "tsc --watch & nodemon dist/index.js",
+    "test": "mocha -r ts-node/register src/**/*.test.ts",
+    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" yarn run test"
   },
   "dependencies": {
+    "@types/chai": "^4.2.11",
     "@types/lodash": "^4.14.150",
-    "lodash": "^4.17.15"
+    "@types/mocha": "^7.0.2",
+    "chai": "^4.2.0",
+    "lodash": "^4.17.15",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
   }
 }
