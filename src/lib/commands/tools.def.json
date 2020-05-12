@@ -9,23 +9,73 @@
       "opportunity": {
         "fields": [
           {
-            "name": "next_steps",
+            "object": "Opportunity",
+            "label": "Account Name",
+            "name": "AccountId",
+            "type": "reference",
+            "default": ""
+          },
+          {
+            "object": "Opportunity",
+            "label": "Amount",
+            "name": "Amount",
+            "type": "currency",
+            "default": ""
+          },
+          {
+            "object": "Opportunity",
+            "label": "Close Date",
+            "name": "CloseDate",
+            "type": "date",
+            "default": ""
+          },
+          {
+            "object": "Opportunity",
+            "label": "Is Closed",
+            "name": "IsClosed",
+            "type": "boolean",
+            "default": ""
+          },
+          {
+            "object": "Opportunity",
+            "label": "Contract Name",
+            "name": "ContractId",
+            "type": "reference",
+            "default": ""
+          },
+          {
+            "object": "Opportunity",
+            "label": "Creator",
+            "name": "CreatedById",
+            "type": "reference",
+            "default": ""
+          },
+          {
+            "object": "Opportunity",
+            "label": "Creation Date",
+            "name": "CreatedDate",
+            "type": "datetime",
+            "default": ""
+          },
+          {
+            "object": "Opportunity",
+            "label": "Deleted",
+            "name": "IsDeleted",
+            "type": "boolean",
+            "default": ""
+          },
+          {
+            "object": "Opportunity",
+            "label": "Next Steps",
+            "name": "NextStep",
             "type": "string",
             "default": ""
           },
           {
-            "name": "stage",
+            "object": "Opportunity",
+            "label": "Stage",
+            "name": "Stage",
             "type": "string",
-            "default": ""
-          },
-          {
-            "name": "amount",
-            "type": "string",
-            "default": ""
-          },
-          {
-            "name": "notes",
-            "type": "text",
             "default": ""
           }
         ]
