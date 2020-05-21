@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import toolsDef from './tools.def.json';
+import fs from 'fs';
 
+const TARGET_REGEX = /^(?<target>[A-aZ-z]+)[\s]?/im;
 const VALUES_REGEX = /(\s(?<type>[a-zA-Z0-9]+))[:\s]?(["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
 const SEARCH_REPLACER_REGEX = /[\s'"_-]/im;
 
@@ -13,11 +15,10 @@ export default class Commands {
     const _splittedCommands = this._splitCommands(input);
     if (_splittedCommands.length > 0) {
       _splittedCommands.forEach((v, k) => {
-        this._getTarget(v, k);
-        this._getOperation(v, k);
+        this._getTarget(v.trim(), k);
       });
     }
-
+    console.log(this._commands);
     return this._commands;
   }
 
@@ -34,55 +35,75 @@ export default class Commands {
   _getTarget(input: string, commandIndex: number) {
     if (!input || input === '') return;
     let currentCommand = _.get(this._commands, [commandIndex], {});
-    const regex = new RegExp(`(${Object.keys(toolsDef).join('|')})`, 'im');
-    currentCommand = _.set(currentCommand, 'target', _.get(input.match(regex), 0, null));
-    this._setCommand(currentCommand, commandIndex);
+    const match = input.match(TARGET_REGEX);
+    const target = _.get(match, 'groups.target');
+    //try to load up the corresponding config file
+    let config;
+    try {
+      config = JSON.parse(fs.readFileSync(__dirname + `/targets/${target}.json`, 'utf8'));
+      currentCommand = _.set(currentCommand, 'target', target);
+      this._setCommand(config, currentCommand, commandIndex);
+      this._getOperation(config, input, commandIndex);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  _getOperation(input: string, commandIndex: number) {
+  _getOperation(config: any, input: string, commandIndex: number) {
     if (!input || input === '') return;
     let currentCommand = _.get(this._commands, [commandIndex], {});
     let _res;
     while ((_res = VALUES_REGEX.exec(input))) {
       let _groups = _.get(_res, 'groups', null);
       if (_groups) {
-        let _type = _.get(_groups, 'type', null);
-        let _search = _.get(_groups, 'search', null).replace(SEARCH_REPLACER_REGEX, '_');
-        let _value = _.get(_groups, 'value', null);
+        let _type = _.get(_groups, 'type', '');
+        let _search = _.get(_groups, 'search', '').replace(SEARCH_REPLACER_REGEX, '');
+        let _value = _.get(_groups, 'value', '');
 
         //if value is absent then the type is an object...so load match the objects for the given target
         //but make sure the target it present as well
-        if ((!_value || _value === '') && _.has(currentCommand, 'target')) {
+        if ((!_value || _value === '') && _.has(currentCommand, 'data.target')) {
           //load up the objects from the current target
-          let _currentTargetObjects = Object.keys(_.get(toolsDef, [_.get(currentCommand, 'target', null), 'objects'], '')).join('|');
-          currentCommand = _.set(currentCommand, 'object', {
-            name: _.get(_type.match(new RegExp(`(${_currentTargetObjects})`, 'im')), 0, null),
+          let _currentTargetObjects = Object.keys(_.get(currentCommand, 'config.objects', {})).join('|');
+
+          currentCommand = _.set(currentCommand, 'data.object', {
+            name: _.get(_type.match(new RegExp(`(${_currentTargetObjects})`, 'im')), 0, ''),
             search: _search,
           });
-          this._setCommand(currentCommand, commandIndex);
+
+          this._setCommand(config, currentCommand, commandIndex);
         }
+
         //if value is filled then this is a field...but we need to make sure there is an object selected
-        if (_value && _value !== '' && _.has(currentCommand, 'object.name')) {
-          let _currentTargetFields = _.get(
-            toolsDef,
-            [_.get(currentCommand, 'target', null), 'objects', _.get(currentCommand, 'object.name', null), 'fields'],
-            []
-          )
-            .map((v: object) => _.get(v, 'name', '').replace(SEARCH_REPLACER_REGEX, '_'))
-            .join('|');
-          currentCommand = _.set(currentCommand, 'field', [
-            ..._.get(currentCommand, 'field', []),
-            { name: _.get(_search.match(new RegExp(`(${_currentTargetFields})`, 'im')), 0, null), value: _value },
+        if (_value && _value !== '' && _.has(currentCommand, 'data.object.name')) {
+          let _currentTargetFields: any;
+          let _currentField: any;
+
+          Object.keys(_.get(config, 'objects', {})).forEach((v) => {
+            if (v.toLowerCase() === _.get(currentCommand, 'data.object.name')) {
+              _currentTargetFields = _.get(config, ['objects', v, 'fields'], []);
+            }
+          });
+
+          _currentTargetFields = _.keyBy(_currentTargetFields, 'name');
+          _currentField = _.find(_currentTargetFields, (v, k) => {
+            return k.toLowerCase() === _search;
+          });
+
+          currentCommand = _.set(currentCommand, 'data.field', [
+            ..._.get(currentCommand, 'data.field', []),
+            { name: _.get(_currentField, 'name'), value: _value },
           ]);
-          this._setCommand(currentCommand, commandIndex);
+
+          this._setCommand(config, currentCommand, commandIndex);
         }
       }
     }
   }
 
-  _setCommand(_command: object, _idx: number) {
+  _setCommand(config: any, _command: object, _idx: number) {
     if (_command && _.get(_command, 'target')) {
-      this._commands = _.set(this._commands, _idx, { ..._command, ..._.get(toolsDef, [_.get(_command, 'target')]) });
+      this._commands = _.set(this._commands, _idx, { data: { ..._command }, config: { ...config } });
     }
   }
 }

@@ -23,6 +23,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var lodash_1 = __importDefault(require("lodash"));
 var tools_def_json_1 = __importDefault(require("./tools.def.json"));
+require("fs");
+var TARGET_REGEX = /^(?<target>[A-aZ-z]+)\s+/im;
 var VALUES_REGEX = /(\s(?<type>[a-zA-Z0-9]+))[:\s]?(["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
 var SEARCH_REPLACER_REGEX = /[\s'"_-]/im;
 var Commands = /** @class */ (function () {
@@ -36,8 +38,8 @@ var Commands = /** @class */ (function () {
         var _splittedCommands = this._splitCommands(input);
         if (_splittedCommands.length > 0) {
             _splittedCommands.forEach(function (v, k) {
-                _this._getTarget(v, k);
-                _this._getOperation(v, k);
+                _this._getTarget(v.trim(), k);
+                _this._getOperation(v.trim(), k);
             });
         }
         return this._commands;
@@ -56,8 +58,14 @@ var Commands = /** @class */ (function () {
         if (!input || input === '')
             return;
         var currentCommand = lodash_1.default.get(this._commands, [commandIndex], {});
-        var regex = new RegExp("(" + Object.keys(tools_def_json_1.default).join('|') + ")", 'im');
-        currentCommand = lodash_1.default.set(currentCommand, 'target', lodash_1.default.get(input.match(regex), 0, null));
+        var target = input.match(TARGET_REGEX);
+        //try to load up the corresponding config file
+        var config;
+        try {
+            config = fs.readFileSync('student.json');
+        }
+        catch (error) { }
+        currentCommand = lodash_1.default.set(currentCommand, 'target', lodash_1.default.get(target, 0, null));
         this._setCommand(currentCommand, commandIndex);
     };
     Commands.prototype._getOperation = function (input, commandIndex) {

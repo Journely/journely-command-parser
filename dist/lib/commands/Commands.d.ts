@@ -1,3 +1,4 @@
+import 'fs';
 export default class Commands {
     _commands: never[];
     _operations: never[];
