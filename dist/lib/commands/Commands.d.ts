@@ -1,4 +1,3 @@
-import 'fs';
 export default class Commands {
     _commands: never[];
     _operations: never[];
@@ -6,6 +5,6 @@ export default class Commands {
     _normalizeInput(input: string): string;
     _splitCommands(input: string): string[];
     _getTarget(input: string, commandIndex: number): void;
-    _getOperation(input: string, commandIndex: number): void;
-    _setCommand(_command: object, _idx: number): void;
+    _getOperation(config: any, input: string, commandIndex: number): void;
+    _setCommand(config: any, _command: object, _idx: number): void;
 }

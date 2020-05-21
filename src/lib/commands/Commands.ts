@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import toolsDef from './tools.def.json';
 import fs from 'fs';
 
 const TARGET_REGEX = /^(?<target>[A-aZ-z]+)[\s]?/im;
