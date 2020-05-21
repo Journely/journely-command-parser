@@ -1,6 +1,6 @@
 {
   "name": "journely-command-parser",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Journely Command Parser Library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
