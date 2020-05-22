@@ -1,0 +1,12 @@
+{
+    "name": "Zoom",
+    "alias": "zm",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/vendors/zoom.png",
+    "description": "Zoom provides videotelephony and online chat services through a cloud-based peer-to-peer software platform and is used for teleconferencing, telecommuting, distance education, and social relations",
+    "appUrl": "",
+    "objects": {
+        "meetings": {
+            "fields": []
+        }
+    }
+}

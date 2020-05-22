@@ -22,7 +22,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var lodash_1 = __importDefault(require("lodash"));
-var fs_1 = __importDefault(require("fs"));
+var targets_1 = __importDefault(require("../commands/targets"));
 var TARGET_REGEX = /^(?<target>[A-aZ-z]+)[\s]?/im;
 var VALUES_REGEX = /(\s(?<type>[a-zA-Z0-9]+))[:\s]?(["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
 var SEARCH_REPLACER_REGEX = /[\s'"_-]/im;
@@ -62,7 +62,7 @@ var Commands = /** @class */ (function () {
         //try to load up the corresponding config file
         var config;
         try {
-            config = JSON.parse(fs_1.default.readFileSync(__dirname + ("/targets/" + target + ".json"), 'utf8'));
+            config = lodash_1.default.get(targets_1.default, target, '{}');
             currentCommand = lodash_1.default.set(currentCommand, 'target', target);
             this._setCommand(config, currentCommand, commandIndex);
             this._getOperation(config, input, commandIndex);

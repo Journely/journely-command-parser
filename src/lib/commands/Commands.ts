@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import fs from 'fs';
+import targets from '../commands/targets';
 
 const TARGET_REGEX = /^(?<target>[A-aZ-z]+)[\s]?/im;
 const VALUES_REGEX = /(\s(?<type>[a-zA-Z0-9]+))[:\s]?(["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
@@ -39,7 +40,7 @@ export default class Commands {
     //try to load up the corresponding config file
     let config;
     try {
-      config = JSON.parse(fs.readFileSync(__dirname + `/targets/${target}.json`, 'utf8'));
+      config = _.get(targets, target, '{}');
       currentCommand = _.set(currentCommand, 'target', target);
       this._setCommand(config, currentCommand, commandIndex);
       this._getOperation(config, input, commandIndex);

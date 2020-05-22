@@ -1,6 +1,0 @@
-{
-    "create": ["create", "add", "new"],
-    "read": ["read", "list", "show", "get", "find"],
-    "update": ["update", "modify", "change", "set"],
-    "delete": ["delete", "remove", "trash"]
-}

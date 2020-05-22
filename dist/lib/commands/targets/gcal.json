@@ -1,0 +1,12 @@
+{
+    "name": "Google Calendar",
+    "alias": "gcal",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/google-cal.png",
+    "description": "Google Cal",
+    "appUrl": "",
+    "objects": {
+        "events": {
+            "fields": []
+        }
+    }
+}
