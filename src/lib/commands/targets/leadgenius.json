@@ -1,0 +1,12 @@
+{
+  "name": "leadgenius",
+  "alias": "lgen",
+  "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/lead_genius.png",
+  "description": "",
+  "appUrl": "",
+  "objects": {
+    "meetings": {
+      "fields": []
+    }
+  }
+}

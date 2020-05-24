@@ -1,0 +1,12 @@
+{
+  "name": "zoominfo",
+  "alias": "zi",
+  "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/zoominfo.png",
+  "description": "",
+  "appUrl": "",
+  "objects": {
+    "meetings": {
+      "fields": []
+    }
+  }
+}

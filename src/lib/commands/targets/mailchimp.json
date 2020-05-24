@@ -1,0 +1,12 @@
+{
+  "name": "mailchimp",
+  "alias": "mc",
+  "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/mailchimp.png",
+  "description": "",
+  "appUrl": "",
+  "objects": {
+    "meetings": {
+      "fields": []
+    }
+  }
+}

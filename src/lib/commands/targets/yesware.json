@@ -1,0 +1,12 @@
+{
+  "name": "yesware",
+  "alias": "yw",
+  "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/yesware.png",
+  "description": "",
+  "appUrl": "",
+  "objects": {
+    "meetings": {
+      "fields": []
+    }
+  }
+}

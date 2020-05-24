@@ -1,0 +1,12 @@
+{
+  "name": "outreach",
+  "alias": "out",
+  "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/outreach.png",
+  "description": "",
+  "appUrl": "",
+  "objects": {
+    "meetings": {
+      "fields": []
+    }
+  }
+}
