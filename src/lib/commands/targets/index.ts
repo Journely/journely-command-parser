@@ -1,5 +1,25 @@
 import salesforce from './salesforce.json';
 import zoom from './zoom.json';
 import gcal from './gcal.json';
+import asana from './asana.json';
+import discoverorg from './discoverorg.json';
+import dynamicsignal from './dynamicsignal.json';
+import expensify from './expensify.json';
+import freshworks from './freshworks.json';
+import greenhouse from './greenhouse.json';
+import gsheets from './gsheets.json';
+import jira from './jira.json';
+import leadgenius from './leadgenius.json';
+import linkedin from './linkedin.json';
+import mailchimp from './mailchimp.json';
+import monday from './monday.json';
+import outreach from './outreach.json';
+import pandadoc from './pandadoc.json';
+import salesloft from './salesloft.json';
+import twilio from './twilio.json';
+import typeform from './typeform.json';
+import yesware from './yesware.json';
+import zendesk from './zendesk.json';
+import zoominfo from './zoominfo.json';
 
-export default { salesforce, zoom, gcal };
+export default { salesforce, zoom, gcal, asana, discoverorg, dynamicsignal, expensify, freshworks, greenhouse, gsheets, jira, leadgenius, linkedin, mailchimp, monday, outreach, pandadoc, salesloft, twilio, typeform, yesware, zendesk, zoominfo };

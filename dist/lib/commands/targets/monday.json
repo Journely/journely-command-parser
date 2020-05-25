@@ -1,0 +1,12 @@
+{
+    "name": "monday",
+    "alias": "mn",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/monday.png",
+    "description": "",
+    "appUrl": "",
+    "objects": {
+        "meetings": {
+            "fields": []
+        }
+    }
+}

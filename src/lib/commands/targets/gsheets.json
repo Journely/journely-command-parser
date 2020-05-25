@@ -1,0 +1,12 @@
+{
+  "name": "gsheets",
+  "alias": "gsheets",
+  "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/gsheets.png",
+  "description": "",
+  "appUrl": "",
+  "objects": {
+    "meetings": {
+      "fields": []
+    }
+  }
+}
