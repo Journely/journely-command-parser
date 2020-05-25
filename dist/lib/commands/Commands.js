@@ -24,8 +24,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var lodash_1 = __importDefault(require("lodash"));
 var targets_1 = __importDefault(require("../commands/targets"));
 var TARGET_REGEX = /^(?<target>[A-aZ-z]+)[\s]?/im;
-var VALUES_REGEX = /(\s(?<type>[a-zA-Z0-9]+))[:\s]?(["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
-var SEARCH_REPLACER_REGEX = /[\s'"_-]/im;
+var VALUES_REGEX = /(\s(?<keyword>[a-zA-Z0-9]+))[:\s]?((?<index>[a-zA-Z0-9_ ]+))([:\s]?["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
 var Commands = /** @class */ (function () {
     function Commands() {
         this._commands = [];
@@ -33,7 +32,6 @@ var Commands = /** @class */ (function () {
     }
     Commands.prototype.parse = function (input) {
         var _this = this;
-        input = this._normalizeInput(input);
         var _splittedCommands = this._splitCommands(input);
         if (_splittedCommands.length > 0) {
             _splittedCommands.forEach(function (v, k) {
@@ -42,11 +40,6 @@ var Commands = /** @class */ (function () {
         }
         // console.log(JSON.stringify(this._commands, null, 2));
         return this._commands;
-    };
-    Commands.prototype._normalizeInput = function (input) {
-        if (!input || input === '')
-            return input;
-        return input.toLowerCase();
     };
     Commands.prototype._splitCommands = function (input) {
         if (!input || input === '')
@@ -79,36 +72,43 @@ var Commands = /** @class */ (function () {
         var _loop_1 = function () {
             var _groups = lodash_1.default.get(_res, 'groups', null);
             if (_groups) {
-                var _type = lodash_1.default.get(_groups, 'type', '');
-                var _search_1 = lodash_1.default.get(_groups, 'search', '').replace(SEARCH_REPLACER_REGEX, '');
+                var _keyword = lodash_1.default.get(_groups, 'keyword', '').toLowerCase();
+                var _index_1 = lodash_1.default.get(_groups, 'index', '').toLowerCase();
+                var _search = lodash_1.default.get(_groups, 'search', '');
                 var _value = lodash_1.default.get(_groups, 'value', '');
-                //if value is absent then the type is an object...so load match the objects for the given target
-                //but make sure the target it present as well
-                if ((!_value || _value === '') && lodash_1.default.has(currentCommand, 'data.target')) {
-                    //load up the objects from the current target
-                    var _currentTargetObjects = Object.keys(lodash_1.default.get(currentCommand, 'config.objects', {})).join('|');
-                    currentCommand = lodash_1.default.set(currentCommand, 'data.object', {
-                        name: lodash_1.default.get(_type.match(new RegExp("(" + _currentTargetObjects + ")", 'im')), 0, ''),
-                        search: _search_1,
-                    });
-                    this_1._setCommand(config, currentCommand, commandIndex);
-                }
-                //if value is filled then this is a field...but we need to make sure there is an object selected
-                if (_value && _value !== '' && lodash_1.default.has(currentCommand, 'data.object.name')) {
-                    var _currentTargetFields_1;
-                    var _currentField = void 0;
+                //1. match the keyword
+                //deal with the object keyword
+                if (_keyword === 'object' && _index_1 !== '') {
+                    var _currentTargetObject_1 = '';
                     Object.keys(lodash_1.default.get(config, 'objects', {})).forEach(function (v) {
-                        if (v.toLowerCase() === lodash_1.default.get(currentCommand, 'data.object.name')) {
-                            _currentTargetFields_1 = lodash_1.default.get(config, ['objects', v, 'fields'], []);
+                        if (v.toLowerCase() === _index_1) {
+                            _currentTargetObject_1 = v;
                         }
                     });
-                    _currentTargetFields_1 = lodash_1.default.keyBy(_currentTargetFields_1, 'name');
-                    _currentField = lodash_1.default.find(_currentTargetFields_1, function (v, k) {
-                        return k.toLowerCase() === _search_1;
+                    var input_1 = {
+                        name: _currentTargetObject_1,
+                        search: _search,
+                    };
+                    if (_value && _value !== '') {
+                        lodash_1.default.set(input_1, 'value', _value);
+                    }
+                    currentCommand = lodash_1.default.set(currentCommand, 'data.object', input_1);
+                    this_1._setCommand(config, currentCommand, commandIndex);
+                }
+                //deal with the key Keyword
+                if (_keyword === 'field' && _index_1 !== '' && lodash_1.default.get(currentCommand, 'data.object')) {
+                    var _currentTargetField_1;
+                    var fields = lodash_1.default.get(config, ['objects', lodash_1.default.get(currentCommand, 'data.object.name'), 'fields'], {});
+                    fields.forEach(function (v) {
+                        if (lodash_1.default.get(v, 'name', '').toLowerCase() === _index_1) {
+                            _currentTargetField_1 = lodash_1.default.get(v, 'name', '');
+                        }
                     });
-                    currentCommand = lodash_1.default.set(currentCommand, 'data.field', __spreadArrays(lodash_1.default.get(currentCommand, 'data.field', []), [
-                        { name: lodash_1.default.get(_currentField, 'name'), value: _value },
-                    ]));
+                    var input_2 = { name: _currentTargetField_1, search: _search };
+                    if (_value && _value !== '') {
+                        lodash_1.default.set(input_2, 'value', _value);
+                    }
+                    currentCommand = lodash_1.default.set(currentCommand, 'data.field', __spreadArrays(lodash_1.default.get(currentCommand, 'data.field', []), [input_2]));
                     this_1._setCommand(config, currentCommand, commandIndex);
                 }
             }
