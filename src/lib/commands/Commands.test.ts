@@ -40,5 +40,10 @@ describe('Commands', function () {
       const command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value" > gcal');
       expect(command.length).to.eq(2);
     });
+
+    it('Parse should return 3 entries', function () {
+      const command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value" > gcal & zoom');
+      expect(command.length).to.eq(3);
+    });
   });
 });
