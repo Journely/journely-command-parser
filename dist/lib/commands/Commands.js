@@ -40,7 +40,7 @@ var Commands = /** @class */ (function () {
                 _this._getTarget(v.trim(), k);
             });
         }
-        console.log(this._commands);
+        // console.log(JSON.stringify(this._commands, null, 2));
         return this._commands;
     };
     Commands.prototype._normalizeInput = function (input) {
