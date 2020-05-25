@@ -3,28 +3,21 @@ import fs from 'fs';
 import targets from '../commands/targets';
 
 const TARGET_REGEX = /^(?<target>[A-aZ-z]+)[\s]?/im;
-const VALUES_REGEX = /(\s(?<type>[a-zA-Z0-9]+))[:\s]?(["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
-const SEARCH_REPLACER_REGEX = /[\s'"_-]/im;
+const VALUES_REGEX = /(\s(?<keyword>[a-zA-Z0-9]+))[:\s]?((?<index>[a-zA-Z0-9_ ]+))([:\s]?["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
 
 export default class Commands {
   _commands = [];
   _operations = [];
 
   parse(input: string) {
-    input = this._normalizeInput(input);
     const _splittedCommands = this._splitCommands(input);
     if (_splittedCommands.length > 0) {
       _splittedCommands.forEach((v, k) => {
         this._getTarget(v.trim(), k);
       });
     }
-    // console.log(JSON.stringify(this._commands, null, 2));
+    console.log(JSON.stringify(this._commands, null, 2));
     return this._commands;
-  }
-
-  _normalizeInput(input: string) {
-    if (!input || input === '') return input;
-    return input.toLowerCase();
   }
 
   _splitCommands(input: string) {
@@ -56,45 +49,49 @@ export default class Commands {
     while ((_res = VALUES_REGEX.exec(input))) {
       let _groups = _.get(_res, 'groups', null);
       if (_groups) {
-        let _type = _.get(_groups, 'type', '');
-        let _search = _.get(_groups, 'search', '').replace(SEARCH_REPLACER_REGEX, '');
+        let _keyword = _.get(_groups, 'keyword', '').toLowerCase();
+        let _index = _.get(_groups, 'index', '').toLowerCase();
+        let _search = _.get(_groups, 'search', '');
         let _value = _.get(_groups, 'value', '');
 
-        //if value is absent then the type is an object...so load match the objects for the given target
-        //but make sure the target it present as well
-        if ((!_value || _value === '') && _.has(currentCommand, 'data.target')) {
-          //load up the objects from the current target
-          let _currentTargetObjects = Object.keys(_.get(currentCommand, 'config.objects', {})).join('|');
-
-          currentCommand = _.set(currentCommand, 'data.object', {
-            name: _.get(_type.match(new RegExp(`(${_currentTargetObjects})`, 'im')), 0, ''),
-            search: _search,
-          });
-
-          this._setCommand(config, currentCommand, commandIndex);
-        }
-
-        //if value is filled then this is a field...but we need to make sure there is an object selected
-        if (_value && _value !== '' && _.has(currentCommand, 'data.object.name')) {
-          let _currentTargetFields: any;
-          let _currentField: any;
-
+        //1. match the keyword
+        //deal with the object keyword
+        if (_keyword === 'object' && _index !== '') {
+          let _currentTargetObject: string = '';
           Object.keys(_.get(config, 'objects', {})).forEach((v) => {
-            if (v.toLowerCase() === _.get(currentCommand, 'data.object.name')) {
-              _currentTargetFields = _.get(config, ['objects', v, 'fields'], []);
+            if (v.toLowerCase() === _index) {
+              _currentTargetObject = v;
             }
           });
 
-          _currentTargetFields = _.keyBy(_currentTargetFields, 'name');
-          _currentField = _.find(_currentTargetFields, (v, k) => {
-            return k.toLowerCase() === _search;
+          let input = {
+            name: _currentTargetObject,
+            search: _search,
+          };
+          if (_value && _value !== '') {
+            _.set(input, 'value', _value);
+          }
+
+          currentCommand = _.set(currentCommand, 'data.object', input);
+          this._setCommand(config, currentCommand, commandIndex);
+        }
+
+        //deal with the key Keyword
+        if (_keyword === 'field' && _index !== '' && _.get(currentCommand, 'data.object')) {
+          let _currentTargetField: any;
+          const fields = _.get(config, ['objects', _.get(currentCommand, 'data.object.name'), 'fields'], {});
+          fields.forEach((v: any) => {
+            if (_.get(v, 'name', '').toLowerCase() === _index) {
+              _currentTargetField = _.get(v, 'name', '');
+            }
           });
 
-          currentCommand = _.set(currentCommand, 'data.field', [
-            ..._.get(currentCommand, 'data.field', []),
-            { name: _.get(_currentField, 'name'), value: _value },
-          ]);
+          let input = { name: _currentTargetField, search: _search };
+          if (_value && _value !== '') {
+            _.set(input, 'value', _value);
+          }
 
+          currentCommand = _.set(currentCommand, 'data.field', [..._.get(currentCommand, 'data.field', []), input]);
           this._setCommand(config, currentCommand, commandIndex);
         }
       }
