@@ -1,0 +1,12 @@
+{
+    "name": "jira",
+    "alias": "jira",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/jira.png",
+    "description": "",
+    "appUrl": "",
+    "objects": {
+        "meetings": {
+            "fields": []
+        }
+    }
+}

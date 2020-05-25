@@ -1,0 +1,12 @@
+{
+    "name": "typeform",
+    "alias": "type",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/typeform.png",
+    "description": "",
+    "appUrl": "",
+    "objects": {
+        "meetings": {
+            "fields": []
+        }
+    }
+}

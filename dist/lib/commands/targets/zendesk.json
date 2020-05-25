@@ -1,0 +1,12 @@
+{
+    "name": "zendesk",
+    "alias": "zd",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/zendesk.gif",
+    "description": "",
+    "appUrl": "",
+    "objects": {
+        "meetings": {
+            "fields": []
+        }
+    }
+}

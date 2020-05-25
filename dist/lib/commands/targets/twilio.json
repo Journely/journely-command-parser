@@ -1,0 +1,12 @@
+{
+    "name": "twilio",
+    "alias": "twilio",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/twilio.png",
+    "description": "",
+    "appUrl": "",
+    "objects": {
+        "meetings": {
+            "fields": []
+        }
+    }
+}

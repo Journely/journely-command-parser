@@ -1,0 +1,12 @@
+{
+    "name": "Asana",
+    "alias": "asana",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/asana.png",
+    "description": "",
+    "appUrl": "",
+    "objects": {
+        "meetings": {
+            "fields": []
+        }
+    }
+}

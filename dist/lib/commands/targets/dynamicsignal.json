@@ -1,0 +1,12 @@
+{
+    "name": "dynamicsignal",
+    "alias": "dyn",
+    "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/integration-logos/dynamicsignal.png",
+    "description": "",
+    "appUrl": "",
+    "objects": {
+        "meetings": {
+            "fields": []
+        }
+    }
+}
