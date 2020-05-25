@@ -10,7 +10,7 @@ describe('Commands', function () {
     describe('#parse()', function () {
         it('Parse should return an array', function () {
             var Command = new Commands_1.default();
-            chai_1.expect(Command.parse('salesforce opportunity:"Something" field:"NextStep":"Steps" field:"Amount":"1000" > gcal > zoom another:"Thing":"RES"')).to.be.an('array');
+            chai_1.expect(Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value" > gcal')).to.be.an('array');
             // expect(Command.parse('1')).to.be.an('array');
         });
     });
