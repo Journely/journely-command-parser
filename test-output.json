@@ -1,12 +1,17 @@
-yarn run v1.21.1
-$ mocha -r ts-node/register src/**/*.test.ts
 
 
   Commands
     #parse()
       ✓ Parse should return an array
+      ✓ Parse data field should contain non-empty metadata
+      ✓ Parse data field should be present
+      ✓ Parse config should be present
+      ✓ Parse data.object should be present
+      ✓ Parse data.target should be present
+      ✓ Parse data.field should be present
+      ✓ Parse should return 2 entries
+      ✓ Parse should return 3 entries
 
 
-  1 passing (4ms)
+  9 passing (10ms)
 
-Done in 1.66s.
