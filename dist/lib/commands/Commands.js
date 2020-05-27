@@ -32,6 +32,8 @@ var Commands = /** @class */ (function () {
     }
     Commands.prototype.parse = function (input) {
         var _this = this;
+        //reset
+        this._reset();
         var _splittedCommands = this._splitCommands(input);
         if (_splittedCommands.length > 0) {
             _splittedCommands.forEach(function (v, k) {
@@ -41,10 +43,21 @@ var Commands = /** @class */ (function () {
         // console.log(JSON.stringify(this._commands, null, 2));
         return this._commands;
     };
+    Commands.prototype._reset = function () {
+        this._commands = [];
+        this._operations = [];
+    };
     Commands.prototype._splitCommands = function (input) {
         if (!input || input === '')
             return [];
         return input.split(/[>&]/);
+    };
+    Commands.prototype._saveMetadata = function (config, input, commandIndex) {
+        if (!input || input === '')
+            return;
+        var currentCommand = lodash_1.default.get(this._commands, [commandIndex], {});
+        lodash_1.default.set(currentCommand, 'data.metadata.rawCommand', input);
+        this._setCommand(config, currentCommand, commandIndex);
     };
     Commands.prototype._getTarget = function (input, commandIndex) {
         if (!input || input === '')
@@ -117,6 +130,8 @@ var Commands = /** @class */ (function () {
         while ((_res = VALUES_REGEX.exec(input))) {
             _loop_1();
         }
+        //finally save the metadata
+        this._saveMetadata(config, input, commandIndex);
     };
     Commands.prototype._setCommand = function (config, _command, _idx) {
         if (_command && lodash_1.default.get(_command, 'target')) {

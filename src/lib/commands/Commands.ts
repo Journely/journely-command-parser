@@ -10,6 +10,8 @@ export default class Commands {
   _operations = [];
 
   parse(input: string) {
+    //reset
+    this._reset();
     const _splittedCommands = this._splitCommands(input);
     if (_splittedCommands.length > 0) {
       _splittedCommands.forEach((v, k) => {
@@ -20,9 +22,21 @@ export default class Commands {
     return this._commands;
   }
 
+  _reset() {
+    this._commands = [];
+    this._operations = [];
+  }
+
   _splitCommands(input: string) {
     if (!input || input === '') return [];
     return input.split(/[>&]/);
+  }
+
+  _saveMetadata(config: any, input: string, commandIndex: number) {
+    if (!input || input === '') return;
+    let currentCommand = _.get(this._commands, [commandIndex], {});
+    _.set(currentCommand, 'data.metadata.rawCommand', input);
+    this._setCommand(config, currentCommand, commandIndex);
   }
 
   _getTarget(input: string, commandIndex: number) {
@@ -96,6 +110,9 @@ export default class Commands {
         }
       }
     }
+
+    //finally save the metadata
+    this._saveMetadata(config, input, commandIndex);
   }
 
   _setCommand(config: any, _command: object, _idx: number) {

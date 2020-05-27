@@ -11,6 +11,11 @@ describe('Commands', function () {
       expect(command).to.be.an('array');
     });
 
+    it('Parse data field should contain non-empty metadata', function () {
+      const command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value"');
+      expect(_.get(command, '[0]data.metadata', null)).to.not.be.null;
+    });
+
     it('Parse data field should be present', function () {
       const command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value"');
       expect(_.get(command, '[0]data', null)).to.not.be.null;

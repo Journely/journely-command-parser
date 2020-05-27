@@ -14,6 +14,10 @@ describe('Commands', function () {
             var command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value"');
             chai_1.expect(command).to.be.an('array');
         });
+        it('Parse data field should contain non-empty metadata', function () {
+            var command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value"');
+            chai_1.expect(lodash_1.default.get(command, '[0]data.metadata', null)).to.not.be.null;
+        });
         it('Parse data field should be present', function () {
             var command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value"');
             chai_1.expect(lodash_1.default.get(command, '[0]data', null)).to.not.be.null;
