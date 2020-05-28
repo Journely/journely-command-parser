@@ -50,5 +50,14 @@ describe('Commands', function () {
       const command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value" > gcal & zoom');
       expect(command.length).to.eq(3);
     });
+
+    it('Keywork synonyms should work', function () {
+      let command;
+      command = Command.parse('salesforce from:Opportunity:"Something":"New Something" where:NextStep:"Steps":"Value"');
+      expect(_.get(command, '[0]data', null)).to.not.be.null;
+      command = Command.parse('salesforce in:Opportunity:"Something":"New Something" show:NextStep:"Steps":"Value"');
+      expect(_.get(command, '[0]data', null)).to.not.be.null;
+      console.log(command);
+    });
   });
 });
