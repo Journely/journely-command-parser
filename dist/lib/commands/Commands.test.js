@@ -48,6 +48,7 @@ describe('Commands', function () {
         });
         it('Empty Object search should still return command', function () {
             var command = Command.parse('salesforce object:Opportunity:""');
+            console.log(JSON.stringify(command, null, 2));
             chai_1.expect(lodash_1.default.get(command, '[0]data.target', null)).to.not.be.null;
         });
         it('Keywork synonyms should work', function () {
@@ -56,7 +57,6 @@ describe('Commands', function () {
             chai_1.expect(lodash_1.default.get(command, '[0]data', null)).to.not.be.null;
             command = Command.parse('salesforce in:Opportunity:"Something":"New Something" show:NextStep:"Steps":"Value"');
             chai_1.expect(lodash_1.default.get(command, '[0]data', null)).to.not.be.null;
-            console.log(command);
         });
     });
 });
