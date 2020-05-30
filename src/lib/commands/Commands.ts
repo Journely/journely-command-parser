@@ -85,7 +85,7 @@ export default class Commands {
               name: _currentTargetObject,
               search: _search,
             };
-            if (_value && _value !== '') {
+            if (_value) {
               _.set(input, 'value', _value);
             }
 
@@ -107,7 +107,7 @@ export default class Commands {
               });
 
               let input = { name: _currentTargetField, search: _search };
-              if (_value && _value !== '') {
+              if (_value) {
                 _.set(input, 'value', _value);
               }
 

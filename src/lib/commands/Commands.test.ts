@@ -51,6 +51,11 @@ describe('Commands', function () {
       expect(command.length).to.eq(3);
     });
 
+    it('Empty Object search should still return command', function () {
+      const command = Command.parse('salesforce object:Opportunity:""');
+      expect(_.get(command, '[0]data.target', null)).to.not.be.null;
+    });
+
     it('Keywork synonyms should work', function () {
       let command;
       command = Command.parse('salesforce from:Opportunity:"Something":"New Something" where:NextStep:"Steps":"Value"');
