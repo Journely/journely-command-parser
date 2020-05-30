@@ -53,6 +53,7 @@ describe('Commands', function () {
 
     it('Empty Object search should still return command', function () {
       const command = Command.parse('salesforce object:Opportunity:""');
+      console.log(JSON.stringify(command, null, 2));
       expect(_.get(command, '[0]data.target', null)).to.not.be.null;
     });
 
@@ -62,7 +63,6 @@ describe('Commands', function () {
       expect(_.get(command, '[0]data', null)).to.not.be.null;
       command = Command.parse('salesforce in:Opportunity:"Something":"New Something" show:NextStep:"Steps":"Value"');
       expect(_.get(command, '[0]data', null)).to.not.be.null;
-      console.log(command);
     });
   });
 });
