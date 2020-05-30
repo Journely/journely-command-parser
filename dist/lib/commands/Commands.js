@@ -105,7 +105,7 @@ var Commands = /** @class */ (function () {
                             name: _currentTargetObject_1,
                             search: _search,
                         };
-                        if (_value && _value !== '') {
+                        if (_value) {
                             lodash_1.default.set(input_1, 'value', _value);
                         }
                         currentCommand = lodash_1.default.set(currentCommand, 'data.object', input_1);
@@ -124,7 +124,7 @@ var Commands = /** @class */ (function () {
                                 }
                             });
                             var input_2 = { name: _currentTargetField_1, search: _search };
-                            if (_value && _value !== '') {
+                            if (_value) {
                                 lodash_1.default.set(input_2, 'value', _value);
                             }
                             currentCommand = lodash_1.default.set(currentCommand, 'data.field', __spreadArrays(lodash_1.default.get(currentCommand, 'data.field', []), [input_2]));

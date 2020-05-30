@@ -46,6 +46,10 @@ describe('Commands', function () {
             var command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value" > gcal & zoom');
             chai_1.expect(command.length).to.eq(3);
         });
+        it('Empty Object search should still return command', function () {
+            var command = Command.parse('salesforce object:Opportunity:""');
+            chai_1.expect(lodash_1.default.get(command, '[0]data.target', null)).to.not.be.null;
+        });
         it('Keywork synonyms should work', function () {
             var command;
             command = Command.parse('salesforce from:Opportunity:"Something":"New Something" where:NextStep:"Steps":"Value"');
