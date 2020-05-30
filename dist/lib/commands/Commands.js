@@ -90,39 +90,47 @@ var Commands = /** @class */ (function () {
                 var _search = lodash_1.default.get(_groups, 'search', '');
                 var _value = lodash_1.default.get(_groups, 'value', '');
                 //1. match the keyword
-                //deal with the object keyword
-                if (_keyword === 'object' && _index_1 !== '') {
-                    var _currentTargetObject_1 = '';
-                    Object.keys(lodash_1.default.get(config, 'objects', {})).forEach(function (v) {
-                        if (v.toLowerCase() === _index_1) {
-                            _currentTargetObject_1 = v;
+                switch (_keyword) {
+                    //deal with the object keyword
+                    case 'object':
+                    case 'from':
+                    case 'in':
+                        var _currentTargetObject_1 = '';
+                        Object.keys(lodash_1.default.get(config, 'objects', {})).forEach(function (v) {
+                            if (v.toLowerCase() === _index_1) {
+                                _currentTargetObject_1 = v;
+                            }
+                        });
+                        var input_1 = {
+                            name: _currentTargetObject_1,
+                            search: _search,
+                        };
+                        if (_value) {
+                            lodash_1.default.set(input_1, 'value', _value);
                         }
-                    });
-                    var input_1 = {
-                        name: _currentTargetObject_1,
-                        search: _search,
-                    };
-                    if (_value && _value !== '') {
-                        lodash_1.default.set(input_1, 'value', _value);
-                    }
-                    currentCommand = lodash_1.default.set(currentCommand, 'data.object', input_1);
-                    this_1._setCommand(config, currentCommand, commandIndex);
-                }
-                //deal with the key Keyword
-                if (_keyword === 'field' && _index_1 !== '' && lodash_1.default.get(currentCommand, 'data.object')) {
-                    var _currentTargetField_1;
-                    var fields = lodash_1.default.get(config, ['objects', lodash_1.default.get(currentCommand, 'data.object.name'), 'fields'], {});
-                    fields.forEach(function (v) {
-                        if (lodash_1.default.get(v, 'name', '').toLowerCase() === _index_1) {
-                            _currentTargetField_1 = lodash_1.default.get(v, 'name', '');
+                        currentCommand = lodash_1.default.set(currentCommand, 'data.object', input_1);
+                        this_1._setCommand(config, currentCommand, commandIndex);
+                        break;
+                    //deal with the index Keyword
+                    case 'field':
+                    case 'where':
+                    case 'show':
+                        if (lodash_1.default.get(currentCommand, 'data.object')) {
+                            var _currentTargetField_1;
+                            var fields = lodash_1.default.get(config, ['objects', lodash_1.default.get(currentCommand, 'data.object.name'), 'fields'], {});
+                            fields.forEach(function (v) {
+                                if (lodash_1.default.get(v, 'name', '').toLowerCase() === _index_1) {
+                                    _currentTargetField_1 = lodash_1.default.get(v, 'name', '');
+                                }
+                            });
+                            var input_2 = { name: _currentTargetField_1, search: _search };
+                            if (_value) {
+                                lodash_1.default.set(input_2, 'value', _value);
+                            }
+                            currentCommand = lodash_1.default.set(currentCommand, 'data.field', __spreadArrays(lodash_1.default.get(currentCommand, 'data.field', []), [input_2]));
+                            this_1._setCommand(config, currentCommand, commandIndex);
                         }
-                    });
-                    var input_2 = { name: _currentTargetField_1, search: _search };
-                    if (_value && _value !== '') {
-                        lodash_1.default.set(input_2, 'value', _value);
-                    }
-                    currentCommand = lodash_1.default.set(currentCommand, 'data.field', __spreadArrays(lodash_1.default.get(currentCommand, 'data.field', []), [input_2]));
-                    this_1._setCommand(config, currentCommand, commandIndex);
+                        break;
                 }
             }
         };

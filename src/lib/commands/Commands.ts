@@ -69,44 +69,53 @@ export default class Commands {
         let _value = _.get(_groups, 'value', '');
 
         //1. match the keyword
-        //deal with the object keyword
-        if (_keyword === 'object' && _index !== '') {
-          let _currentTargetObject: string = '';
-          Object.keys(_.get(config, 'objects', {})).forEach((v) => {
-            if (v.toLowerCase() === _index) {
-              _currentTargetObject = v;
+        switch (_keyword) {
+          //deal with the object keyword
+          case 'object':
+          case 'from':
+          case 'in':
+            let _currentTargetObject: string = '';
+            Object.keys(_.get(config, 'objects', {})).forEach((v) => {
+              if (v.toLowerCase() === _index) {
+                _currentTargetObject = v;
+              }
+            });
+
+            let input = {
+              name: _currentTargetObject,
+              search: _search,
+            };
+            if (_value) {
+              _.set(input, 'value', _value);
             }
-          });
 
-          let input = {
-            name: _currentTargetObject,
-            search: _search,
-          };
-          if (_value && _value !== '') {
-            _.set(input, 'value', _value);
-          }
+            currentCommand = _.set(currentCommand, 'data.object', input);
+            this._setCommand(config, currentCommand, commandIndex);
+            break;
 
-          currentCommand = _.set(currentCommand, 'data.object', input);
-          this._setCommand(config, currentCommand, commandIndex);
-        }
+          //deal with the index Keyword
+          case 'field':
+          case 'where':
+          case 'show':
+            if (_.get(currentCommand, 'data.object')) {
+              let _currentTargetField: any;
+              const fields = _.get(config, ['objects', _.get(currentCommand, 'data.object.name'), 'fields'], {});
+              fields.forEach((v: any) => {
+                if (_.get(v, 'name', '').toLowerCase() === _index) {
+                  _currentTargetField = _.get(v, 'name', '');
+                }
+              });
 
-        //deal with the key Keyword
-        if (_keyword === 'field' && _index !== '' && _.get(currentCommand, 'data.object')) {
-          let _currentTargetField: any;
-          const fields = _.get(config, ['objects', _.get(currentCommand, 'data.object.name'), 'fields'], {});
-          fields.forEach((v: any) => {
-            if (_.get(v, 'name', '').toLowerCase() === _index) {
-              _currentTargetField = _.get(v, 'name', '');
+              let input = { name: _currentTargetField, search: _search };
+              if (_value) {
+                _.set(input, 'value', _value);
+              }
+
+              currentCommand = _.set(currentCommand, 'data.field', [..._.get(currentCommand, 'data.field', []), input]);
+              this._setCommand(config, currentCommand, commandIndex);
             }
-          });
 
-          let input = { name: _currentTargetField, search: _search };
-          if (_value && _value !== '') {
-            _.set(input, 'value', _value);
-          }
-
-          currentCommand = _.set(currentCommand, 'data.field', [..._.get(currentCommand, 'data.field', []), input]);
-          this._setCommand(config, currentCommand, commandIndex);
+            break;
         }
       }
     }
