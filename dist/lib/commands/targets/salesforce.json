@@ -1,9 +1,14 @@
 {
+    "id": "salesforce",
+    "viewTypes": ["table", "list", "form", "iframe"],
+    "defaultViewType": "table",
     "name": "Salesforce",
     "alias": "sf",
     "appLogo": "https://jnly-cdn.s3.amazonaws.com/static/images/vendors/sf.png",
     "description": "Salesforce provides customer-relationship management service and also sells a complementary suite of enterprise applications focused on customer service, marketing automation, analytics, and application development",
     "appUrl": "",
+    "authType": "OAUTH",
+    "authUrl": "",
     "objects": {
         "Opportunity": {
             "fields": [
@@ -11,1063 +16,1417 @@
                     "object": "Opportunity",
                     "label": "Account Name",
                     "name": "AccountId",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Amount",
                     "name": "Amount",
-                    "type": "currency"
+                    "type": "currency",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Close Date",
                     "name": "Close Date",
-                    "type": "date"
+                    "type": "date",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Closed ",
                     "name": "IsClosed ",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Contract",
                     "name": "ContractId ",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Created By",
                     "name": "CreatedById ",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Created Date ",
                     "name": "CreatedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Deleted ",
                     "name": "IsDeleted",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Description",
                     "name": "Description",
-                    "type": "textarea "
+                    "type": "textarea ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Expected Revenue",
                     "name": "ExpectedRevenue ",
-                    "type": "currency "
+                    "type": "currency ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Fiscal Period",
                     "name": "FiscalYear",
-                    "type": "int"
+                    "type": "int",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Fiscal Period ",
                     "name": "FiscalQuarter ",
-                    "type": "int"
+                    "type": "int",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Forecast Category ",
                     "name": "ForecastCategory",
-                    "type": "picklist "
+                    "type": "picklist ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Forecast Category ",
                     "name": "ForecastCategoryName",
-                    "type": "picklist "
+                    "type": "picklist ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Has Line Item",
                     "name": "HasOpportunityLineItem",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Last Activity ",
                     "name": "LastActivityDate",
-                    "type": "date"
+                    "type": "date",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Last Modified By",
                     "name": "LastModifiedById",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Last Modified Date",
                     "name": "LastModifiedDate ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Last Referenced Date ",
                     "name": "LastReferencedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Last Viewed Date",
                     "name": "LastViewedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Lead Source",
                     "name": "LeadSource ",
-                    "type": "picklist "
+                    "type": "picklist ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Next Step",
                     "name": "NextStep",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Opportunity ID",
                     "name": "Id ",
-                    "type": "Id "
+                    "type": "Id ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Opportunity Name ",
                     "name": "Name ",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Opportunity Owner ",
                     "name": "OwnerId",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Price Book",
                     "name": "Pricebook2Id ",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Primary Campaign Source ",
                     "name": "CampaignId ",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Private",
                     "name": "IsPrivate",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Probability (%) ",
                     "name": "Probability",
-                    "type": "percent "
+                    "type": "percent ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Quantity",
                     "name": "TotalOpportunityQuantity ",
-                    "type": "double "
+                    "type": "double ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Stage",
                     "name": "StageName",
-                    "type": "picklist "
+                    "type": "picklist ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "System Modstamp ",
                     "name": "SystemModstamp ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Type",
                     "name": "Type",
-                    "type": "Picklist "
+                    "type": "Picklist ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Opportunity",
                     "label": "Won ",
                     "name": "IsWon",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Closed ",
                     "name": "IsClosed ",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Created By",
                     "name": "CreatedById ",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Created Date",
                     "name": "CreatedDate ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Description",
                     "name": "Description",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Forecast Category",
                     "name": "ForecastCategory",
-                    "type": "picklist "
+                    "type": "picklist ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Forecast Category Name",
                     "name": "ForecastCategoryName",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Is Active",
                     "name": "IsActive ",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Last Modified By ",
                     "name": "LastModifiedById",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Last Modified Date",
                     "name": "LastModifiedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Master Label ",
                     "name": "MasterLabel",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Opportunity Stage ID ",
                     "name": "Id ",
-                    "type": "id "
+                    "type": "id ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Probability (%) ",
                     "name": "DefaultProbability ",
-                    "type": "percent "
+                    "type": "percent ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Sort Order",
                     "name": "SortOrder ",
-                    "type": "int"
+                    "type": "int",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "System Modstamp ",
                     "name": "SystemModstamp ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "OpportunityStage",
                     "label": "Won",
                     "name": "IsWon",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Account",
                     "name": "MasterRecordId",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Account ID ",
                     "name": "Id ",
-                    "type": "id "
+                    "type": "id ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Account Number",
                     "name": "AccountNumber",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Account Owner",
                     "name": "OwnerId ",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Account Site ",
                     "name": "Site",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Account Source ",
                     "name": "AccountSource ",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Annual Revenue ",
                     "name": "AnnualRevenue ",
-                    "type": "currency"
+                    "type": "currency",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Billing Address ",
                     "name": "BillingStreet",
-                    "type": "textarea "
+                    "type": "textarea ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Billing Address ",
                     "name": "BillingCity ",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Billing Address ",
                     "name": "BillingState",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Billing Address ",
                     "name": "BillingPostalCode",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Billing Address ",
                     "name": "BillingCountry ",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Created By ",
                     "name": "CreatedById ",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Created Date",
                     "name": "CreatedDate ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Data.com Key ",
                     "name": "Jigsaw ",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Deleted",
                     "name": "IsDeleted",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Description",
                     "name": "Description",
-                    "type": "textarea"
+                    "type": "textarea",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Employees ",
                     "name": "NumberOfEmployees ",
-                    "type": "int "
+                    "type": "int ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Fax ",
                     "name": "Fax ",
-                    "type": "phone"
+                    "type": "phone",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Industry ",
                     "name": "Industry ",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Jigsaw Company Id ",
                     "name": "JigsawCompanyId",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Last Activity",
                     "name": "LastActivityDate ",
-                    "type": "date"
+                    "type": "date",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Last Modified By",
                     "name": "LastModifiedById ",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Last Modified Date",
                     "name": "LastModifiedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Last Referenced Date",
                     "name": "LastReferencedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Last Viewed Date",
                     "name": "LastViewedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Ownership",
                     "name": "Ownership",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Parent Account",
                     "name": "ParentId",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Phone",
                     "name": "Phone",
-                    "type": "phone"
+                    "type": "phone",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Photo URL",
                     "name": "PhotoUrl ",
-                    "type": "url "
+                    "type": "url ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Rating ",
                     "name": "Rating ",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "SIC Code",
                     "name": "Sic",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "SIC Description",
                     "name": "SicDesc ",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Shipping Address ",
                     "name": "ShippingStreet ",
-                    "type": "textarea"
+                    "type": "textarea",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Shipping Address ",
                     "name": "ShippingCity ",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Shipping Address ",
                     "name": "ShippingState ",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Shipping Address ",
                     "name": "ShippingPostalCode ",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Shipping Address ",
                     "name": "ShippingCountry ",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "System Modstamp",
                     "name": "SystemModstamp",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Ticker Symbol",
                     "name": "TickerSymbol",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Type",
                     "name": "Type",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Account",
                     "label": "Website ",
                     "name": "Website ",
-                    "type": "url "
+                    "type": "url ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Account Name",
                     "name": "AccountId ",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Assistant",
                     "name": "AssistantName",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Asst. Phone",
                     "name": "AssistantPhone ",
-                    "type": "phone"
+                    "type": "phone",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Birthdate ",
                     "name": "Birthdate ",
-                    "type": "date"
+                    "type": "date",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Contact",
                     "name": "MasterRecordId ",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Contact ID ",
                     "name": "Id ",
-                    "type": "id "
+                    "type": "id ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Contact Owner",
                     "name": "OwnerId",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Created By ",
                     "name": "CreatedById ",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Created Date ",
                     "name": "CreatedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Data.com Key ",
                     "name": "Jigsaw ",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Deleted ",
                     "name": "IsDeleted ",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Department ",
                     "name": "Department ",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Description",
                     "name": "Description",
-                    "type": "textarea "
+                    "type": "textarea ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Do Not Call ",
                     "name": "DoNotCall ",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Email",
                     "name": "Email",
-                    "type": "email "
+                    "type": "email ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Email Bounced Date",
                     "name": "EmailBouncedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Email Bounced Reason",
                     "name": "EmailBouncedReason",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Email Opt Out",
                     "name": "HasOptedOutOfEmail ",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Fax ",
                     "name": "Fax ",
-                    "type": "phone "
+                    "type": "phone ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Fax Opt Out",
                     "name": "HasOptedOutOfFax",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Home Phone",
                     "name": "HomePhone",
-                    "type": "phone "
+                    "type": "phone ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Is Email Bounced ",
                     "name": "IsEmailBounced",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Jigsaw Contact Id ",
                     "name": "JigsawContactId ",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Last Activity",
                     "name": "LastActivityDate",
-                    "type": "date"
+                    "type": "date",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Last Modified By",
                     "name": "LastModifiedById ",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Last Modified Date",
                     "name": "LastModifiedDate ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Last Referenced Date",
                     "name": "LastReferencedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Last Viewed Date",
                     "name": "LastViewedDate",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Lead Source ",
                     "name": "LeadSource",
-                    "type": "picklist "
+                    "type": "picklist ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Mailing Address",
                     "name": "MailingStreet",
-                    "type": "textarea"
+                    "type": "textarea",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Mailing Address",
                     "name": "MailingCity",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Mailing Address",
                     "name": "MailingState",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Mailing Address",
                     "name": "MailingPostalCode",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Mailing Address",
                     "name": "MailingCountry",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Mobile",
                     "name": "MobilePhone ",
-                    "type": "phone "
+                    "type": "phone ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Name",
                     "name": "Salutation",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Name",
                     "name": "FirstName",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Name",
                     "name": "LastName",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Other Address",
                     "name": "OtherStreet ",
-                    "type": "textarea "
+                    "type": "textarea ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Other Address",
                     "name": "OtherCity",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Other Address",
                     "name": "OtherState ",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Other Address",
                     "name": "OtherPostalCode ",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Other Address",
                     "name": "OtherCountry",
-                    "type": "string"
+                    "type": "string",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Other Phone",
                     "name": "OtherPhone",
-                    "type": "phone "
+                    "type": "phone ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Phone",
                     "name": "Phone",
-                    "type": "phone "
+                    "type": "phone ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Photo URL ",
                     "name": "PhotoUrl ",
-                    "type": "url "
+                    "type": "url ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Reports To",
                     "name": "ReportsToId",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "System Modstamp",
                     "name": "SystemModstamp ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Contact",
                     "label": "Title",
                     "name": "Title ",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Account",
                     "name": "AccountId",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Activity ID",
                     "name": "Id ",
-                    "type": "id"
+                    "type": "id",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Archived",
                     "name": "IsArchived",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Assigned To",
                     "name": "OwnerId ",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Call Duration",
                     "name": "CallDurationInSeconds ",
-                    "type": "int"
+                    "type": "int",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Call Object Identifier",
                     "name": "CallObject ",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Call Result ",
                     "name": "CallDisposition",
-                    "type": "string "
+                    "type": "string ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Call Type",
                     "name": "CallType",
-                    "type": "picklist "
+                    "type": "picklist ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Closed",
                     "name": "IsClosed ",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Comments ",
                     "name": "Description",
-                    "type": "textarea "
+                    "type": "textarea ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Create Recurring Series of Tasks",
                     "name": "IsRecurrence",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Created By",
                     "name": "CreatedById",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Created Date",
                     "name": "CreatedDate ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Deleted ",
                     "name": "IsDeleted",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Due Date",
                     "name": "ActivityDate",
-                    "type": "date"
+                    "type": "date",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "End Date ",
                     "name": "RecurrenceEndDateOnly",
-                    "type": "date"
+                    "type": "date",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "High Priority",
                     "name": "IsHighPriority",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Last Modified By",
                     "name": "LastModifiedById ",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Last Modified Date ",
                     "name": "LastModifiedDate ",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Name",
                     "name": "WhoId",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Priority",
                     "name": "Priority",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Recurrence Activity",
                     "name": "RecurrenceActivityId",
-                    "type": "reference "
+                    "type": "reference ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Recurrence Day of Month ",
                     "name": "RecurrenceDayOfMonth",
-                    "type": "int"
+                    "type": "int",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Recurrence Day of Week Mask",
                     "name": "RecurrenceDayOfWeekMask",
-                    "type": "int"
+                    "type": "int",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Recurrence Instance ",
                     "name": "RecurrenceInstance",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Recurrence Interval ",
                     "name": "RecurrenceInterval",
-                    "type": "int "
+                    "type": "int ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Recurrence Month of Year",
                     "name": "RecurrenceMonthOfYear",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Recurrence Time Zone ",
                     "name": "RecurrenceTimeZoneSidKey",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Recurrence Type",
                     "name": "RecurrenceType ",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Related To ",
                     "name": "WhatId",
-                    "type": "reference"
+                    "type": "reference",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Reminder Date/Time",
                     "name": "ReminderDateTime",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Reminder Set ",
                     "name": "IsReminderSet ",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Repeat This Task",
                     "name": "RecurrenceRegeneratedType",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Start Date",
                     "name": "RecurrenceStartDateOnly",
-                    "type": "date"
+                    "type": "date",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Status",
                     "name": "Status",
-                    "type": "picklist"
+                    "type": "picklist",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "Subject",
                     "name": "Subject",
-                    "type": "combobox "
+                    "type": "combobox ",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
                     "label": "System Modstamp",
                     "name": "SystemModstamp",
-                    "type": "datetime"
+                    "type": "datetime",
+                    "default": false,
+                    "required": false
                 },
                 {
                     "object": "Task",
@@ -1075,7 +1434,9 @@
                     "name": "Type ",
                     "type": "picklist"
                 }
-            ]
+            ],
+            "default": false,
+            "required": false
         },
         "Contact": {
             "fields": []

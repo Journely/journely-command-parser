@@ -1,18 +1,34 @@
 declare const _default: {
     salesforce: {
+        id: string;
+        viewTypes: string[];
+        defaultViewType: string;
         name: string;
         alias: string;
         appLogo: string;
         description: string;
         appUrl: string;
+        authType: string;
+        authUrl: string;
         objects: {
             Opportunity: {
-                fields: {
+                fields: ({
                     object: string;
                     label: string;
                     name: string;
                     type: string;
-                }[];
+                    default: boolean;
+                    required: boolean;
+                } | {
+                    object: string;
+                    label: string;
+                    name: string;
+                    type: string;
+                    default?: undefined;
+                    required?: undefined;
+                })[];
+                default: boolean;
+                required: boolean;
             };
             Contact: {
                 fields: never[];
