@@ -11,7 +11,7 @@ describe('Commands', function () {
     var Command = new Commands_1.default();
     describe('#parse()', function () {
         it('Parse should return an array', function () {
-            var command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value"');
+            var command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value" & zoom > gcal');
             chai_1.expect(command).to.be.an('array');
         });
         it('Parse data field should contain non-empty metadata', function () {
@@ -48,15 +48,15 @@ describe('Commands', function () {
         });
         it('Empty Object search should still return command', function () {
             var command = Command.parse('salesforce object:Opportunity:""');
+            console.log(JSON.stringify(command, null, 2));
             chai_1.expect(lodash_1.default.get(command, '[0]data.target', null)).to.not.be.null;
         });
-        it('Keywork synonyms should work', function () {
+        it('Keyword synonyms should work', function () {
             var command;
             command = Command.parse('salesforce from:Opportunity:"Something":"New Something" where:NextStep:"Steps":"Value"');
             chai_1.expect(lodash_1.default.get(command, '[0]data', null)).to.not.be.null;
             command = Command.parse('salesforce in:Opportunity:"Something":"New Something" show:NextStep:"Steps":"Value"');
             chai_1.expect(lodash_1.default.get(command, '[0]data', null)).to.not.be.null;
-            console.log(command);
         });
     });
 });

@@ -7,7 +7,7 @@ describe('Commands', function () {
   const Command = new Commands();
   describe('#parse()', function () {
     it('Parse should return an array', function () {
-      const command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value"');
+      const command = Command.parse('salesforce object:Opportunity:"Something":"New Something" field:NextStep:"Steps":"Value" & zoom > gcal');
       expect(command).to.be.an('array');
     });
 
@@ -53,16 +53,16 @@ describe('Commands', function () {
 
     it('Empty Object search should still return command', function () {
       const command = Command.parse('salesforce object:Opportunity:""');
+      console.log(JSON.stringify(command, null, 2));
       expect(_.get(command, '[0]data.target', null)).to.not.be.null;
     });
 
-    it('Keywork synonyms should work', function () {
+    it('Keyword synonyms should work', function () {
       let command;
       command = Command.parse('salesforce from:Opportunity:"Something":"New Something" where:NextStep:"Steps":"Value"');
       expect(_.get(command, '[0]data', null)).to.not.be.null;
       command = Command.parse('salesforce in:Opportunity:"Something":"New Something" show:NextStep:"Steps":"Value"');
       expect(_.get(command, '[0]data', null)).to.not.be.null;
-      console.log(command);
     });
   });
 });

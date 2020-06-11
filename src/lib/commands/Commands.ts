@@ -3,7 +3,7 @@ import fs from 'fs';
 import targets from '../commands/targets';
 
 const TARGET_REGEX = /^(?<target>[A-aZ-z]+)[\s]?/im;
-const VALUES_REGEX = /(\s(?<keyword>[a-zA-Z0-9]+))[:\s]?((?<index>[a-zA-Z0-9_ ]+))([:\s]?["'](?<search>[a-zA-Z0-9_ ]+)["'])([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
+const VALUES_REGEX = /(\s(?<keyword>[a-zA-Z0-9]+))[:\s]?((?<index>[a-zA-Z0-9_ ]+))([:\s]?["'](?<search>[a-zA-Z0-9_ ]+)["'])?([:\s]?["'](?<value>[a-zA-Z0-9_ ]+)["'])?/gi;
 
 export default class Commands {
   _commands = [];
@@ -18,7 +18,7 @@ export default class Commands {
         this._getTarget(v.trim(), k);
       });
     }
-    // console.log(JSON.stringify(this._commands, null, 2));
+    console.log(JSON.stringify(this._commands, null, 2));
     return this._commands;
   }
 
@@ -85,7 +85,7 @@ export default class Commands {
               name: _currentTargetObject,
               search: _search,
             };
-            if (_value) {
+            if (_value && _value !== '') {
               _.set(input, 'value', _value);
             }
 
@@ -107,7 +107,7 @@ export default class Commands {
               });
 
               let input = { name: _currentTargetField, search: _search };
-              if (_value) {
+              if (_value && _value !== '') {
                 _.set(input, 'value', _value);
               }
 
